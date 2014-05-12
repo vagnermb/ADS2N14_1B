@@ -2,12 +2,11 @@ package com.controle;
 
 import java.util.Random;
 
-import com.model.contatoModel;
+import com.model.ContatoModel;
 
-public class contatoControle {
+public class ContatoControle {
 
-	private contatoModel contato = new contatoModel();
-
+	private ContatoModel contato = new ContatoModel();
 	Random geraRandom = new Random();
 
 	public String gerarNome() {
@@ -52,5 +51,8 @@ public class contatoControle {
 		tipoTelefone = geraRandom.nextInt(3);
 		return tipos[tipoTelefone];
 
+	}
+	public String geraTelefone() {
+		return (this.geraRandom.nextInt(1000 - 100) + 100) + "-" + (this.geraRandom.nextInt(10000 - 1000) + 1000);
 	}
 }
