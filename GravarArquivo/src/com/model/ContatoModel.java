@@ -1,6 +1,6 @@
 package com.model;
 
-public class contatoModel {
+public class ContatoModel {
 
 	private String nome;
 	private String sobrenome;

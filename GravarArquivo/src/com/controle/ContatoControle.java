@@ -1,73 +1,56 @@
 package com.controle;
 
-
 import java.util.Random;
 
 import com.model.contatoModel;
 
-
-public class ContatoControle {
+public class contatoControle {
 
 	private contatoModel contato = new contatoModel();
+
 	Random geraRandom = new Random();
 
 	public String gerarNome() {
 
-		int nomeAleatorio, sobrenomeAleatorio;
-		nomeAleatorio = geraRandom.nextInt(20);
-		String nomes[] = { "BRUNA", "THACIA", "ANA", "GABY", "LARISSA",
-				"CAROLINA", "CAROLINE", "CAROL", "CLARA", "SAMANTA", "MARIA", "ANGELA",
-				"MAIARA", "BEATRIZ", "BIA", "BIANCA", "CARLA", "GRACIELA",
-				"PATRICIA", "PATI" };
+		int nome1, nome2;
+
+		String nomes[] = { "PATRICA", "ANGELA", "MARIA", "ANA", "IARA",
+				"LARISSA", "AMANDA", "JOANA", "JULIA", "CAMILA", "CINTIA", "CAROL",
+				"CAROLINE", "CECILIA", "EDUARDA", "DUDA", "BIA", "BEATRIZ",
+				"ELIZ", "ELISANGELA" };
 				String nome = "";
-		sobrenomeAleatorio = geraRandom.nextInt(20);
-		String sobrenomes[] = { "NUNES", "SILVA", "SILVEIRA", "BORGES", "ANTONIA",
-				"SENNA", "SCHUMACHER", "PROST", "HAIKKONEN", "LAUDA", "BARICHELLO",
-				"FITIPALDI", "KANNAAN", "MOORE", "PEDROSA", "HEIDDEN", "BLANCA",
-				"PERSEFONE", "MESIAS", "MATIAS"};
+				nome1 = geraRandom.nextInt(20);
+		String sobrenomes[] = { "SILVA", "SILVEIRA", "NUMES", "ANTUNE", "RIBAS",
+				"SCHUMACHER", "SENNA", "BORGES", "FERREIRA", "SANTOS", "SOUZA",
+				"SIPRIANO", "SIQUEIRA", "SILAS", "MOREIRA", "MOURA", "MESSIAS",
+				"MUNHOZ", "MIRANDA", "MATIAS" };
 				String sobrenome = "";
+				nome2 = geraRandom.nextInt(20);
 
-	
-		
-
-		nome = nomes[nomeAleatorio];
-		sobrenome = sobrenomes[sobrenomeAleatorio];
-
+		nome = nomes[nome1];
+		sobrenome = sobrenomes[nome2];
 		return nome + " " + sobrenome;
 
 	}
 
 	public String gerarEndereco() {
 
-		int enderecoAleatorio;
-
-		String enderecos[] = { "Olavo Bilac", "Marechal Floriano",
-				"Getulio Vargas", "A", "B", "C", "Sem saída", "Sem saída", "S",
-				"Das Grotas", "das Paineiras", "das Pedras" };
-
-		enderecoAleatorio = geraRandom.nextInt(12);
-
-		return enderecos[enderecoAleatorio];
+		int endereco;
+		String enderecos[] = { "RUA FELIPE SHCIEL", "RUA FELIPE UEBEL",
+				"RUA EMILIO EBLING", "RUA EMILO BECKER", "RUA INDEPENDECIA", "AV IMPERATIRZ",
+				"AV FEITORIA", "AV SAO BORJA", "AV DAS OLIVEIRAS",
+				"AV JOAO BECKER", "RUA 10", "RUA 20" };
+		endereco = geraRandom.nextInt(12);
+		return enderecos[endereco];
 
 	}
 
 	public String gerarTipoTelefone() {
 
-		int tipoTelefoneAleatorio;
-
-		String tipos[] = { "R", "C", "T" };
-
-		tipoTelefoneAleatorio = geraRandom.nextInt(3);
-
-		return tipos[tipoTelefoneAleatorio];
+		int tipoTelefone;
+		String tipos[] = { "Comercial", "Particular", "Casa" };
+		tipoTelefone = geraRandom.nextInt(3);
+		return tipos[tipoTelefone];
 
 	}
-
-	public String geraTelefone() {
-
-		return (this.geraRandom.nextInt(1000 - 100) + 100) + "-"
-				+ (this.geraRandom.nextInt(10000 - 1000) + 1000);
-
-	}
-
 }
