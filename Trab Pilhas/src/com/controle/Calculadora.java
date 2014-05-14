@@ -1,28 +1,27 @@
-package senac.controller;
+package com.controle;
 
-import com.senac.pilha.Pilha;
-import com.senac.view.View;
+import com.modelo.Pilha;
+import com.view.View;
 
 public class Calculadora {
 
-	private String expressao;
+	private String operacao;
 	private View view;
-	private Pilha<Double> numeros;
-	private Pilha<String> operador;
+	private Pilha<Double> dados;
+	private Pilha<String> sinal;
 
 	public Calculadora() {
 
-		this.expressao = "";
+		this.operacao = "";
 		view = new View();
-		this.numeros = new Pilha<Double>();
-		this.operador = new Pilha<String>();
+		this.dados = new Pilha<Double>();
+		this.sinal = new Pilha<String>();
 	}
 
 	public void run() {
 
-		this.expressao = view.readLine("Digite uma expressão");
-		view.showMessage("--------------------");
-		tratarExpressao(this.expressao);
+		this.operacao = view.readLine("Digite a operação:");
+		tratarExpressao(this.operacao);
 
 	}
 
@@ -43,22 +42,22 @@ public class Calculadora {
 			} else if (isOperador(String.valueOf(expressao.charAt(i)))) {
 				operador = String.valueOf(expressao.charAt(i));
 
-			if (operador.equals("(") || this.operador.isEmpyt()) {
-				this.numeros.push(Double.parseDouble(numeroString));
-				this.operador.push(String.valueOf(operador));
+			if (operador.equals("(") || this.sinal.isEmpyt()) {
+				this.dados.push(Double.parseDouble(numeroString));
+				this.sinal.push(String.valueOf(operador));
 				} else if (operador.equals(")")) {
-					while (this.operador.peek().equals("(")) {
+					while (this.sinal.peek().equals("(")) {
 					calcular();
 					}
-			if (this.operador.peek().equals("(")) {
-				this.operador.pull();		
+			if (this.sinal.peek().equals("(")) {
+				this.sinal.pull();		
 				}
-				} else if (getPrioridade(operador) > getPrioridade((String) this.operador
+				} else if (getPrioridade(operador) > getPrioridade((String) this.sinal
 						.peek())) {
 				}
 
 			} else if (expressao.charAt(i) == '.') {
-				this.numeros.push(Double.parseDouble(numeroString)); 
+				this.dados.push(Double.parseDouble(numeroString)); 
 			}
 		}
 	}
@@ -86,9 +85,9 @@ public class Calculadora {
 		}
 
 	public void calcular() {
-		String op = (String) operador.pop();
-		double valor2 = (double) numeros.pop();
-		double valor1 = (double) numeros.pop();
+		String op = (String) sinal.pop();
+		double valor2 = (double) dados.pop();
+		double valor1 = (double) dados.pop();
 		double resultado = 0;
 		if (op.equals("+")) {
 			resultado = valor1 + valor2;
@@ -107,7 +106,7 @@ public class Calculadora {
 			System.out.println(valor1 + " " + op + " " + valor2 + " = "	+ resultado);
 		}
 
-		numeros.push(resultado);
+		dados.push(resultado);
 	}
 
 	private int getPrioridade(String operador) {
@@ -125,28 +124,6 @@ public class Calculadora {
 	
 		} else {
 		return 0;
-		}
-	}
-
-	private void pegarNumerosExpressao(String expressao) {
-		String numeroString = "";
-		for (int i = 0; i < expressao.length(); i++) {
-			if (isNumero(String.valueOf(expressao.charAt(i)))) {
-			numeroString += String.valueOf(expressao.charAt(i));
-			} else {
-				numeros.push(Double.parseDouble(numeroString));
-			}
-		}
-	}
-
-	private void pegarOperadoresExpressao(String expressao) {
-		String operadorString = "";
-		for (int i = 0; i < expressao.length(); i++) {
-			if (isNumero(String.valueOf(expressao.charAt(i)))) {
-			operadorString += String.valueOf(expressao.charAt(i));
-			} else {
-			operador.push(operadorString);
-			}
 		}
 	}
 }
