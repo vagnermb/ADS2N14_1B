@@ -24,4 +24,10 @@ public class Deserto {
 		posicao++;
 
 	}
+
+	public void voltar() {
+		nivelComb--;
+		posicao--;
+
+	}
 }
