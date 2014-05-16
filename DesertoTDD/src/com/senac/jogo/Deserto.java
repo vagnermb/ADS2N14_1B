@@ -1,5 +1,7 @@
 package com.senac.jogo;
 
+
+
 public class Deserto {
 
 	private int nivelComb = 0;
@@ -31,8 +33,26 @@ public class Deserto {
 
 	}
 
-	public void carregar() {
-		nivelComb = 6;
-		
+	public void carregar() throws tanqueCheioException {
+		if (nivelComb == 6) {
+			throw new tanqueCheioException();
+		} else if (mapa[posicao] > 0 || posicao == 0)
+			nivelComb++;
+		mapa[posicao]--;
+	}
+
+	public void descarregar() throws SemCombustivelException {
+
+		if (nivelComb > 0) {
+			nivelComb--;
+			mapa[posicao]++;
+		} else
+			throw new SemCombustivelException();
+
+	}
+
+	public Object getMapa(int posatual) {
+
+		return mapa[posatual];
 	}
 }

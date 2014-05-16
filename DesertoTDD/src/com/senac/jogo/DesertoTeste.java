@@ -1,8 +1,8 @@
 package com.senac.jogo;
 
 import static org.junit.Assert.*;
-import SemCombustivelException;
-import tanqueCheioException;
+import com.senac.jogo.SemCombustivelException;
+import com.senac.jogo.tanqueCheioException;
 
 import org.junit.Test;
 import java.util.*;
@@ -50,12 +50,13 @@ public class DesertoTeste {
 
 	}
 
-	public void testaCarregarCombustivel() {
+	@Test
+	public void testaCarregarCombustivel() throws tanqueCheioException {
 		{
 			deserto.iniciaJogo();
 			deserto.avancar();
 			deserto.voltar();
-			int combutivel = deserto.getNivelCombustivel();
+			int combustivel = deserto.getNivelCombustivel();
 
 			deserto.carregar();
 
@@ -63,4 +64,16 @@ public class DesertoTeste {
 		}
 	}
 
+	@Test
+	public void testadescarregarCombustivel() throws SemCombustivelException {
+		{
+			int posatual = deserto.getPosicaoInicial();
+			int combatual = deserto.getNivelCombustivel();
+
+			deserto.descarregar();
+
+			assertEquals(1, deserto.getMapa(posatual));
+			assertEquals(combatual - 1, deserto.getNivelCombustivel());
+		}
+	}
 }
