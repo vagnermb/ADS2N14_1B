@@ -30,4 +30,9 @@ public class Deserto {
 		posicao--;
 
 	}
+
+	public void carregar() {
+		nivelComb = 6;
+		
+	}
 }
