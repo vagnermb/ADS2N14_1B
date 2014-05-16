@@ -18,4 +18,17 @@ public class DesertoTeste {
 
 	}
 
+	public void testaComandoAvancar() {
+
+		deserto.iniciaJogo();
+
+		deserto.avancar();
+
+		int posAtual = deserto.getPosicaoInicial();
+		int combustAtual = deserto.getNivelCombustivel();
+		assertEquals(posAtual - 1, deserto.getPosicaoInicial());
+		assertEquals(combustAtual - 1, deserto.getNivelCombustivel());
+
+	}
+
 }

@@ -2,27 +2,26 @@ package com.senac.jogo;
 
 public class Deserto {
 
-	/**
-	 * @param args
-	 */
-	public static void main(String[] args) {
-		
+	private int nivelComb = 0;
+	private int posicao;
+	private int[] mapa = new int[10];
 
+	public int getPosicaoInicial() {
+		return posicao;
+	}
+
+	public int getNivelCombustivel() {
+		return nivelComb;
 	}
 
 	public void iniciaJogo() {
-		// TODO Auto-generated method stub
-		
+		nivelComb = 6;
+		posicao = 0;
 	}
 
-	public Object getPosicaoInicial() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	public void avancar() {
+		nivelComb--;
+		posicao++;
 
-	public Object getNivelCombustivel() {
-		// TODO Auto-generated method stub
-		return 6;
 	}
-
 }
