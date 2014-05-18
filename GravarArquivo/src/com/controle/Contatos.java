@@ -1,4 +1,4 @@
-package com.controle;
+package src.com.controle;
 
 public class Contatos {
 
@@ -6,6 +6,7 @@ public class Contatos {
 
 		ContatoControle Contatos = new ContatoControle();
 		for (int i = 0; i < 20; i++) {
+			Contatos.geraLista();
 		}
 	}
 }

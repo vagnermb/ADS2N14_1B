@@ -1,14 +1,14 @@
-package com.controle;
+package src.com.controle;
 
 import java.util.Random;
-
+import com.view.View;	
 import com.model.ContatoModel;
 
 public class ContatoControle {
 
 	private ContatoModel contato = new ContatoModel();
 	Random geraRandom = new Random();
-
+	private View view = new View();
 	public String gerarNome() {
 
 		int nome1, nome2;
@@ -29,7 +29,6 @@ public class ContatoControle {
 		nome = nomes[nome1];
 		sobrenome = sobrenomes[nome2];
 		return nome + " " + sobrenome;
-
 	}
 
 	public String gerarEndereco() {
@@ -41,7 +40,6 @@ public class ContatoControle {
 				"AV JOAO BECKER", "RUA 10", "RUA 20" };
 		endereco = geraRandom.nextInt(12);
 		return enderecos[endereco];
-
 	}
 
 	public String gerarTipoTelefone() {
@@ -55,4 +53,13 @@ public class ContatoControle {
 	public String geraTelefone() {
 		return (this.geraRandom.nextInt(1000 - 100) + 100) + "-" + (this.geraRandom.nextInt(10000 - 1000) + 1000);
 	}
+	public void geraLista() {
+
+		this.contato.setNome(this.gerarNome());
+		this.contato.setEndereco(this.gerarEndereco());
+		this.contato.setTelefone(this.geraTelefone());
+		this.contato.setTipo(this.gerarTipoTelefone());
+
+		view.imprimeContato(this.contato.getNome(), this.contato.getEndereco(),
+				this.contato.getTelefone(), this.contato.getTipo());	}
 }
